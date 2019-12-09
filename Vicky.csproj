@@ -189,7 +189,11 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\SeriesController.cs" />
+    <Compile Include="Dtos\CategoryDto.cs" />
+    <Compile Include="Dtos\GenreDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
+    <Compile Include="Dtos\SeriesDto.cs" />
+    <Compile Include="Dtos\TagsDto.cs" />
     <Compile Include="EntityConfigurations\GenreConfiguration.cs" />
     <Compile Include="EntityConfigurations\MovieConfiguration.cs" />
     <Compile Include="EntityConfigurations\SeriesConfigurations.cs" />

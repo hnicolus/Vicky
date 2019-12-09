@@ -89,6 +89,7 @@ namespace Vicky.Controllers
                     movieInDb.CategoryId = movie.CategoryId;
                     movieInDb.Description = movie.Description;
                     movieInDb.Tags = movie.Tags;
+                    movieInDb.Views = movie.Views;
                 }
 
                 _context.SaveChanges();

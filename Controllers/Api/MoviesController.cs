@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Data.Entity;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
@@ -20,13 +21,13 @@ namespace Vicky.Controllers.Api
             _context = new ApplicationDbContext();
 
         }
-
-        //List of Movies
-        // /api/movies/
+        //Get /api/movies/
         [HttpGet]
         public IEnumerable<MovieDto> GetMovies()
         {
-            return  _context.Movies.ToList().Select(Mapper.Map<Movie,MovieDto>);
+            return _context.Movies
+                .Include(m =>m.Category)
+                .Include(m => m.Genre).ToList().Select(Mapper.Map<Movie,MovieDto>);
         }
 
 
@@ -70,14 +71,6 @@ namespace Vicky.Controllers.Api
                 if (movieInDb != null)
                 {
                     Mapper.Map(movieDto,movieInDb);
-                    //movieInDb.Name = movieDto.Name;
-                    //movieInDb.ReleasedDate = movieDto.ReleasedDate;
-                    //movieInDb.CategoryId = movieDto.CategoryId;
-                    //movieInDb.GenreId = movieDto.GenreId;
-                    //movieInDb.Description = movieDto.Description;
-                    //movieInDb.Tags = movieDto.Tags;
-                    //movieInDb.Views = movieDto.Views;
-
                     _context.SaveChanges();
 
                 }
