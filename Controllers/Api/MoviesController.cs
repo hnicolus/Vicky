@@ -21,7 +21,8 @@ namespace Vicky.Controllers.Api
 
         }
 
-
+        //List of Movies
+        // /api/movies/
         [HttpGet]
         public IEnumerable<MovieDto> GetMovies()
         {
@@ -30,12 +31,12 @@ namespace Vicky.Controllers.Api
 
 
         [HttpGet]
-        public MovieDto Movie(int id)
+        public IHttpActionResult Movie(int id)
         {
             var movie =  _context.Movies.SingleOrDefault(m => m.Id == id);
             if (movie == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            return Mapper.Map<Movie,MovieDto>(movie);
+                return NotFound();
+            return Ok(Mapper.Map<Movie,MovieDto>(movie));
         }
 
 
@@ -52,7 +53,7 @@ namespace Vicky.Controllers.Api
 
             movieDto.Id = movie.Id;
 
-            return Created(new Uri(Request.RequestUri + "/"+ movie.Id),movieDto);
+            return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
         }
 
         // PUT /api/movies/id

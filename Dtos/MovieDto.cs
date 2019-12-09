@@ -11,7 +11,6 @@ namespace Vicky.Dtos
     {
         public int? Id { get; set; }
         [Required]
-        [MaxLength(255)]
         public int CategoryId { get; set; }
 
         public string Name { get; set; }
@@ -19,8 +18,6 @@ namespace Vicky.Dtos
         public string Description { get; set; }
 
         public int GenreId { get; set; }
-
-        public List<Tag> Tags { get; set; }
         public DateTime PublishedDate { get; set; }
         public DateTime ReleasedDate { get; set; }
         public int? Views { get; set; }
