@@ -1,0 +1,38 @@
+﻿@model Vicky.ViewModels.Series.SeriesFormViewModel
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Series"))
+{
+    <div>
+        @Html.LabelFor( m  => m.Series.Name)
+        @Html.TextBoxFor(m  => m.Series.Name , new { @class="form-control"})
+    </div>
+
+    <div>
+        @Html.LabelFor( m  => m.Series.CategoryId)
+        @Html.DropDownListFor(m => m.Series.CategoryId, new SelectList( Model.Categories.ToList(),"Id","Name"),"Select Category",new { @class="form-control"})
+    </div>
+
+    <div>
+        @Html.LabelFor( t => t.Series.GenreId)
+        @Html.DropDownListFor(t => t.Series.GenreId, new SelectList(Model.Genres.ToList(),"Id","Name"),"Select Genre",new { @class="form-control"})
+    </div>
+
+    <div>
+        @Html.LabelFor(t => t.Series.Description)
+        @Html.TextBoxFor(t => t.Series.Description,new { @class="form-control"})
+    </div>
+
+    <div>
+        @Html.LabelFor(t => t.Series.ReleasedDate)
+        @Html.TextBoxFor(t => t.Series.ReleasedDate,new { @class="form-control"})
+    </div>
+ 
+    <div>
+        @Html.LabelFor(t => t.Series.Views)
+        @Html.TextBoxFor(t => t.Series.Views,new { @class="form-control"})
+    </div>
+}

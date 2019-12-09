@@ -1,0 +1,41 @@
+﻿@model Vicky.ViewModels.Series.SeriesIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<ul>
+    @foreach (var series in Model.Series)
+    {
+        <li>
+            <h5>@Html.ActionLink(series.Name, "Detail", "Series",new { id = series.Id } ,new { @class="list-item"})</h5>
+        </li>
+    }
+</ul>*@
+
+
+
+<div >
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Published Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var series in Model.Series)
+        {
+            <tr>
+                <td>@series.Id</td>
+                <td>@Html.ActionLink(series.Name, "Detail", "Series", new {id = series.Id}, new {@class = "item-link"})</td>
+                <td>@series.Genre.Name</td>
+                <td>@($"{series.PublishedDate:d MMM yyyy}")</td>
+            </tr>
+        }
+
+        </tbody>
+    </table>
+</div>
+
