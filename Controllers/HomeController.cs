@@ -7,6 +7,7 @@ using Vicky.Models;
 
 namespace Vicky.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
